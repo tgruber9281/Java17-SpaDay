@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+<body>
+    <div th:unless="${user == null}">
+        <h1 th:text="${'Hello ' + user.username + '!'}"></h1>
+
+    </div>
+    <div>
+        <a href="/">Service Selection Menu</a>
+    </div>
+    <div th:if="${users.size()}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Add Services</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td><a th:href="${'/user/view/'+ user.userId}" th:text="${user.username}"></a>
+                    </td>
+                    <td th:text="'Add services to account - feature coming soon.'"></td>
+                    <td th:text="'Edit account - feature coming soon.'"></td>
+                    <td th:text="'Delete account - feature coming soon.'"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
