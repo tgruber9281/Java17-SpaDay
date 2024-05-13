@@ -1,5 +1,7 @@
 package org.launchcode.models;
 
+import jakarta.validation.constraints.Email;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -13,6 +15,7 @@ public class User {
     private final int userId;
     private static int nextId = 1;
     private String username;
+    @Email
     private String email;
     private String password;
     private static final ZoneId z = ZoneId.of( "America/Chicago" );

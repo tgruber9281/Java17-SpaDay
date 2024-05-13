@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="~{fragments :: head}"></head>
 <body>
+    <header th:replace="~{fragments::header}"></header>
     <div th:unless="${user == null}">
         <h1 th:text="${'Hello ' + user.username + '!'}"></h1>
 
@@ -25,7 +26,7 @@
                     </td>
                     <td th:text="'Add services to account - feature coming soon.'"></td>
                     <td th:text="'Edit account - feature coming soon.'"></td>
-                    <td th:text="'Delete account - feature coming soon.'"></td>
+                    <td><a th:href="${'/user/delete/' + user.userId}" th:text="${'Delete Account'}"></a></td>
                 </tr>
             </tbody>
         </table>

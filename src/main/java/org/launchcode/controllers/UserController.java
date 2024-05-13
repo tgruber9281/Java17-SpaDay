@@ -46,4 +46,30 @@ public class UserController {
         model.addAttribute("user", user);
         return "user/view";
     }
+    
+    @GetMapping("edit/{userId")
+    public String displayEditUser(@PathVariable int userId, Model model) {
+        User user = UserData.getById(userId);
+        model.addAttribute("title", "Edit " + user.getUsername());
+        model.addAttribute("user", user);
+        return "user/edit";
+    }
+    
+    @PostMapping("edit")
+    public String processEditUser(@RequestParam int userId, @ModelAttribute User user,
+                                  String verify){
+        if (user.getPassword().equals(verify)) {
+            User userToEdit = UserData.getById(userId);
+            userToEdit.setUsername(user.getUsername());
+            userToEdit.setEmail(user.getEmail());
+            userToEdit.setPassword(user.getPassword());
+        }
+        return "redirect:/user";
+    }
+    
+    @GetMapping("delete/{userId}")
+    public String deleteUser(@PathVariable int userId) {
+        UserData.remove(userId);
+        return "redirect:/user";
+    }
 }

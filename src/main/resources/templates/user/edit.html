@@ -4,14 +4,15 @@
 <body>
     <header th:replace="~{fragments::header}"></header>
     <div>
-        <form method="post" action="/user/add">
+        <form method="post" action="/user/edit">
+            <input type="hidden" name="userId" th:value="${user.userId}">
             <label>Name:
-                <input type="text" name="username" id="username" />
+                <input type="text" name="username" id="username" th:value="${user.username}" />
             </label><br />
             <label>Email Address:
-                <input type="email" name="email" id="email" />
+                <input type="email" name="email" id="email" th:value="${user.email}" />
             </label><br />
-            <label>Password:
+            <label>Change Password:
                 <input type="password" name="password" id="password" />
             </label><br />
             <label>Verify Password:

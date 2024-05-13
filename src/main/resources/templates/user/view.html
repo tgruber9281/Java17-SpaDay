@@ -2,9 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="~{fragments :: head}"></head>
 <body>
+    <header th:replace="~{fragments::header}"></header>
     <div th:text="${user.username}"></div>
     <div th:text="${user.email}"></div>
     <div th:text="${'User Joined: ' + user.dateAdded}"></div>
     <div th:text="${'User ID: ' + user.userId}"></div>
+    <div><a th:href="${'/user/delete/' + user.userId}" th:text="${'Delete Account'}"></a></div>
 </body>
 </html>
